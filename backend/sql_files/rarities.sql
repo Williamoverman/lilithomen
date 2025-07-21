@@ -1,0 +1,1 @@
+INSERT INTO Rarities (name) VALUES ('Common'), ('Uncommon'), ('Rare'), ('Very Rare'), ('Ultra Rare');
