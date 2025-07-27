@@ -49,7 +49,7 @@ INSERT INTO Killer_Perks (name, killer_id, icon) VALUES
 ('Hex: Crowd Control', (SELECT id FROM Killers WHERE killer_name = 'The Trickster'), 'assets/img/killer/perk/hex_crowd_control.png'),
 ('Hex: Devour Hope', (SELECT id FROM Killers WHERE killer_name = 'The Hag'), 'assets/img/killer/perk/hex_devour_hope.png'),
 ('Hex: Face the Darkness', (SELECT id FROM Killers WHERE killer_name = 'The Knight'), 'assets/img/killer/perk/hex_face_the_darkness.png'),
-('Hex: Fortune''s Fool', (SELECT id FROM Killers WHERE killer_name = 'The Cenobite'), 'assets/img/killer/perk/hex_fortunes_fool .png'),
+('Hex: Fortune''s Fool', (SELECT id FROM Killers WHERE killer_name = 'The Cenobite'), 'assets/img/killer/perk/hex_fortunes_fool.png'),
 ('Hex: Haunted Ground', (SELECT id FROM Killers WHERE killer_name = 'The Spirit'), 'assets/img/killer/perk/hex_haunted_ground.png'),
 ('Hex: Huntress Lullaby', (SELECT id FROM Killers WHERE killer_name = 'The Huntress'), 'assets/img/killer/perk/hex_huntress_lullaby.png'),
 ('Hex: No One Escapes Death', NULL, 'assets/img/killer/perk/hex_no_one_escapes_death.png'),
