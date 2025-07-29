@@ -13,10 +13,19 @@ CREATE TABLE Killers (
 CREATE TABLE Survivors (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE,
-    role VARCHAR(100) NOT NULL,
     gender VARCHAR(50) NOT NULL,
     icon VARCHAR(100) NOT NULL,
     bg VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Categories (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Rarities (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Killer_Perks (
@@ -63,14 +72,4 @@ CREATE TABLE Item_Addons (
     icon VARCHAR(100) NOT NULL,
     FOREIGN KEY (category_id) REFERENCES Categories(id) ON DELETE CASCADE,
     FOREIGN KEY (rarity_id) REFERENCES Rarities(id) ON DELETE RESTRICT
-);
-
-CREATE TABLE Categories (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE Rarities (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL
 );
