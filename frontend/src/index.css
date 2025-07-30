@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+@theme {
+  --killer-bg-primary: #1A0000;
+  --killer-bg-hover: #D32F2F;
+  --survivor-bg-primary: #1F2630;
+  --survivor-bg-hover: #4B6A88;
+}
+
+.bg-killer-primary {
+  background-color: var(--killer-bg-primary);
+  transition: background-color 0.3s ease;
+}
+
+.bg-killer-primary:hover {
+  background-color: var(--killer-bg-hover);
+}
+
+.bg-survivor-primary {
+  background-color: var(--survivor-bg-primary);
+  transition: background-color 0.3s ease;
+}
+
+.bg-survivor-primary:hover {
+  background-color: var(--survivor-bg-hover);
+}
