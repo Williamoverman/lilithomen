@@ -1,76 +1,66 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function App() {
   const navigate = useNavigate();
   const [hoveredSide, setHoveredSide] = useState<'left' | 'right' | null>(null);
 
-  const getRotation = () => {
-    if (hoveredSide === 'left') return -12;
-    if (hoveredSide === 'right') return 12;
-    return 0;
-  };
-
   return (
     <div className="flex h-screen relative overflow-hidden">
       {/* Survivor side */}
       <div
-        className="flex-1 bg-survivor-primary text-white flex items-center justify-center cursor-pointer transition"
+        className="flex-1 bg-survivor-primary relative flex items-center justify-center cursor-pointer"
         onClick={() => navigate('/survivor')}
         onMouseEnter={() => setHoveredSide('left')}
         onMouseLeave={() => setHoveredSide(null)}
       >
-        <div className="flex flex-col items-center">
-          <img
-            src="../src/assets/img/icons/survivor_icon.png"
-            alt="Survivor Icon"
-            className="w-50 h-50 mb-4"
-          />
+        <div className="relative z-10 flex flex-col items-center text-center">
+          <div className="w-50 h-50 mb-6 relative">
+            <img
+              src="../src/assets/img/icons/survivor_icon.png"
+              alt="Survivor Icon"
+            />
+          </div>
+          <h2 className="text-5xl font-bold text-white mb-4 tracking-wider">
+            SURVIVOR
+          </h2>
+          <p className="text-blue-200 text-lg max-w-xs">
+            Hide. Repair. Escape. Defy The Entity.
+          </p>
         </div>
+        
+        <div className={`absolute top-10 left-10 w-20 h-20 border-l-4 border-t-4 border-[var(--survivor-border)] border-transition ${hoveredSide === 'left' ? 'opacity-70 scale-110' : 'opacity-30'}`}></div>
+        <div className={`absolute bottom-10 left-10 w-20 h-20 border-l-4 border-b-4 border-[var(--survivor-border)] border-transition ${hoveredSide === 'left' ? 'opacity-70 scale-110' : 'opacity-30'}`}></div>
       </div>
 
+      <div className={`absolute inset-y-0 left-1/2 w-1 z-20 transition-all duration-500 ease-in-out`} style={{
+        background: `linear-gradient(to bottom, transparent, ${hoveredSide ? '#444' : '#666'}, transparent)`
+      }}></div>
+      
       {/* Killer side */}
       <div
-        className="flex-1 bg-killer-primary text-white flex items-center justify-center cursor-pointer transition"
+        className="flex-1 bg-killer-primary relative flex items-center justify-center cursor-pointer"
         onClick={() => navigate('/killer')}
         onMouseEnter={() => setHoveredSide('right')}
         onMouseLeave={() => setHoveredSide(null)}
       >
-        <div className="flex flex-col items-center">
-          <img
-            src="../src/assets/img/icons/killer_icon.png"
-            alt="Killer Icon"
-            className="w-50 h-50 mb-4"
-          />
+        <div className="relative z-10 flex flex-col items-center text-center">
+          <div className="w-50 h-50 mb-6 relative">
+            <img
+              src="../src/assets/img/icons/killer_icon.png"
+              alt="Killer Icon"
+            />
+          </div>
+          <h2 className="text-5xl font-bold text-white mb-4 tracking-wider">
+            KILLER
+          </h2>
+          <p className="text-[#FFCCCC] text-lg">
+            Catch meat. Sacrifice meat. Appease The Entity.
+          </p>
         </div>
-      </div>
-
-      <div
-        className="absolute top left-1/2 -translate-x-1/2 w-52 h-52 md:w-64 md:h-64 pointer-events-none"
-        aria-hidden="true"
-      >
-        <div
-          className="transition-transform duration-500 ease-in-out w-full h-full"
-          style={{ 
-            transform: `rotate(${getRotation()}deg)`,
-            transformOrigin: '50% 20%'
-          }}
-        >
-          <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-2xl">
-            <line x1="10" y1="20" x2="90" y2="20" stroke="#a3a3a3" strokeWidth="3" />
-            <line x1="15" y1="20" x2="25" y2="40" stroke="#a3a3a3" strokeWidth="1.5" />
-            <line x1="15" y1="20" x2="5" y2="40" stroke="#a3a3a3" strokeWidth="1.5" />
-            <path d="M 0 42 Q 15 55 30 42" stroke="#a3a3a3" strokeWidth="2" fill="none" />
-            <line x1="85" y1="20" x2="95" y2="40" stroke="#a3a3a3" strokeWidth="1.5" />
-            <line x1="85" y1="20" x2="75" y2="40" stroke="#a3a3a3" strokeWidth="1.5" />
-            <path d="M 70 42 Q 85 55 100 42" stroke="#a3a3a3" strokeWidth="2" fill="none" />
-          </svg>
-        </div>
-        <svg viewBox="0 0 100 100" className="w-full h-full absolute top-0 left-0 drop-shadow-2xl">
-          <line x1="50" y1="0" x2="50" y2="20" stroke="#a3a3a3" strokeWidth="3" />
-          <circle cx="50" cy="0" r="3" fill="#a3a3a3" />
-          <circle cx="50" cy="20" r="3" fill="#a3a3a3" />
-        </svg>
+        
+        <div className={`absolute top-10 right-10 w-20 h-20 border-r-4 border-t-4 border-[var(--killer-border)] border-transition ${hoveredSide === 'right' ? 'opacity-70 scale-110' : 'opacity-30'}`}></div>
+        <div className={`absolute bottom-10 right-10 w-20 h-20 border-r-4 border-b-4 border-[var(--killer-border)] border-transition ${hoveredSide === 'right' ? 'opacity-70 scale-110' : 'opacity-30'}`}></div>
       </div>
     </div>
   );

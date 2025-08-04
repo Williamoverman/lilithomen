@@ -1,26 +1,34 @@
 @import "tailwindcss";
 
 @theme {
-  --killer-bg-primary: #1A0000;
-  --killer-bg-hover: #D32F2F;
-  --survivor-bg-primary: #1F2630;
-  --survivor-bg-hover: #4B6A88;
+  --killer-bg-primary: #1a0c0c;
+  --killer-bg-hover: #8B0000;
+  --survivor-bg-primary: #10191b;
+  --survivor-bg-hover: #446e7c;
+  --killer-border: #B22222;
+  --survivor-border: #5dade2;
 }
 
 .bg-killer-primary {
   background-color: var(--killer-bg-primary);
-  transition: background-color 0.3s ease;
+  transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
 }
 
 .bg-killer-primary:hover {
   background-color: var(--killer-bg-hover);
+  box-shadow: inset 0 0 10px var(--killer-border);
 }
 
 .bg-survivor-primary {
   background-color: var(--survivor-bg-primary);
-  transition: background-color 0.3s ease;
+  transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
 }
 
 .bg-survivor-primary:hover {
   background-color: var(--survivor-bg-hover);
+  box-shadow: inset 0 0 10px var(--survivor-border);
+}
+
+.border-transition {
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, border-color 0.5s ease-in-out;
 }

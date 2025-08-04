@@ -1,4 +1,4 @@
-interface Killer {
+export interface Killer {
   id: number;
   killer_name: string;
   name: string;
